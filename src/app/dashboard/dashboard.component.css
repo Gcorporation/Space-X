@@ -275,5 +275,12 @@ html {
         background-color: darkgreen;
         color: white;
     }
+
+    .text-center {
+        margin-left: 10px; 
+        text-decoration: underline; 
+        margin-bottom: 10px; 
+        text-align: center;
+    }
 }
 
