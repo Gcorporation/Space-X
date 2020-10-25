@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceService } from '../http-service.service'
+import { HttpServiceService } from '../http-service.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,12 +20,15 @@ export class DashboardComponent implements OnInit {
   selectedLaunchIndex: number = null;
   selectedLaunchStatusIndex: number = null;
 
-  constructor(private httpService: HttpServiceService) { }
+  constructor(private httpService: HttpServiceService,private spinner: NgxSpinnerService) {
+    this.spinner.show();
+   }
 
   ngOnInit(): void {
     this.httpService.get().subscribe((result: any[])=>{
       console.log("result from API -->",result);
       this.dataFromAPi = result;
+      this.spinner.hide();
     }) 
   }
 
@@ -42,9 +46,11 @@ export class DashboardComponent implements OnInit {
     console.log("this.launch -->",this.launch);
     console.log("this.landing -->",this.landing);
 
+    this.spinner.show();
     this.httpService.getAll(this.year,this.launch,this.landing).subscribe((result: any[])=>{
       console.log("result from API -->",result);
       this.dataFromAPi = result;
+      this.spinner.hide();
     })
   }
 
