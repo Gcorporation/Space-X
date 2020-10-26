@@ -7,7 +7,7 @@
             <div class="text-center">
                 <label>Launch Year</label>     
             </div>
-        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;">
+        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px; margin-left: 20px">
             <div *ngFor="let year of years; let i = index" class="grid-item">
                 <button (click)="filterYear(year,i)" class="button" [ngClass]="{'highlight': i == selectedYearIndex}">{{year}}</button>
             </div>
@@ -15,7 +15,7 @@
         <div class="text-center">
             <label>Successfull Launch</label>     
         </div>
-        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;">
+        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;  margin-left: 20px">
             <div *ngFor="let launch of launchStatus; let i = index" class="grid-item">
                 <button (click)="filterlaunchStatus(launch,i)" class="button" [ngClass]="{'highlight': i == selectedLaunchIndex}">{{launch}}</button>
             </div>
@@ -23,9 +23,9 @@
         <div class="text-center">
             <label>Successfull Landing</label>     
         </div>
-        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;">
+        <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;  margin-left: 20px">
             <div *ngFor="let landing of landingStatus; let i = index" class="grid-item">
-                <button (click)="filterlandingStatus(landing,i)" class="button" [ngClass]="{'highlight': i == selectedLaunchStatusIndex}">{{landing}}</button>
+                <button (click)="filterlandingStatus(landing,i)" class="button" [ngClass]="{'highlight': i == selectedLandStatusIndex}">{{landing}}</button>
             </div>
         </div>
     </div>
@@ -41,7 +41,8 @@
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Mission Ids: </label>
-                <label class="blue">Mission Ids:</label>
+                <label class="blue" *ngIf="data.mission_id.length > 0">{{data.mission_id[0]}}</label>
+                <label class="blue" *ngIf="data.mission_id.length == 0">NA</label>
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Launch Year: </label>
@@ -53,12 +54,15 @@
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Successful Landing: </label>
-                <label class="blue">{{data.launch_landing}}</label>
+                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success == null">false</label>
+                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success != null">{{data.rocket.first_stage.cores[0].land_success}}</label>
             </div>
         </div>
     </div>
 </div>
 
-
+<footer>
+    <h3>Developed By Prabhjot Singh</h3>
+</footer>
 
 

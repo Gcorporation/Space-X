@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   landing: string = '';
   selectedYearIndex: number = null;
   selectedLaunchIndex: number = null;
-  selectedLaunchStatusIndex: number = null;
+  selectedLandStatusIndex: number = null;
 
   constructor(private httpService: HttpServiceService,private spinner: NgxSpinnerService) {
     this.spinner.show();
@@ -68,24 +68,36 @@ export class DashboardComponent implements OnInit {
     console.log("this.launch -->",this.launch);
     console.log("this.landing -->",this.landing);
 
+    this.spinner.show();
     this.httpService.getAll(this.year,this.launch,this.landing).subscribe((result: any[])=>{
       console.log("result from API -->",result);
       this.dataFromAPi = result;
+      this.spinner.hide();
     })
   }
 
   filterlandingStatus(landing,i) {
     console.log(landing);
     console.log(i);
-    this.landing = landing;
-    this.selectedLaunchStatusIndex = i;
+    if(landing == 'True') {
+    this.landing = landing.toLowerCase()
+    } else {
+      this.landing = landing;
+    };
+    if(this.selectedLandStatusIndex == i) {
+      this.selectedLandStatusIndex = null;
+      this.landing = null;
+    } else {
+      this.selectedLandStatusIndex = i;
+    }
     console.log("this.year -->",this.year);
     console.log("this.launch -->",this.launch);
     console.log("this.landing -->",this.landing);
-
+    this.spinner.show();
     this.httpService.getAll(this.year,this.launch,this.landing).subscribe((result: any[])=>{
       console.log("result from API -->",result);
       this.dataFromAPi = result;
+      this.spinner.hide();
     })
   }
 

@@ -90,6 +90,13 @@ html {
         background-color: darkgreen;
         color: white;
     }
+
+    .text-center {
+        margin-left: 10px; 
+        text-decoration: underline; 
+        margin-bottom: 10px; 
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 700px) and (max-device-width: 1024px) {
@@ -182,6 +189,13 @@ html {
         background-color: darkgreen;
         color: white;
     }
+
+    .text-center {
+        margin-left: 10px; 
+        text-decoration: underline; 
+        margin-bottom: 10px; 
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 1025px) {
@@ -254,7 +268,7 @@ html {
     }
     
     .split-right {
-        height: 88%;
+        height: 87%;
         width: 79%;
         position: absolute;
         z-index: 1;
