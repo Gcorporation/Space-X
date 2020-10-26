@@ -94,7 +94,7 @@ export class DashboardComponent implements OnInit {
     };
     if(this.selectedLandStatusIndex == i) {
       this.selectedLandStatusIndex = null;
-      this.landing = null;
+      this.landing = '';
     } else {
       this.selectedLandStatusIndex = i;
     }

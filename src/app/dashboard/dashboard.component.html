@@ -58,7 +58,7 @@
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Successful Landing: </label>
-                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success === null">false</label>
+                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success === null">NA</label>
                 <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success !== null">{{data.rocket.first_stage.cores[0].land_success}}</label>
             </div>
         </div>
