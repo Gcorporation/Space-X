@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     console.log(year);
     console.log(i);
     this.year = year;
-    if(this.selectedYearIndex == i) {
+    if(this.selectedYearIndex === i) {
       this.selectedYearIndex = null;
       this.year = '';
     } else {
@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
     console.log(launch);
     console.log(i);
     this.launch = launch.toLowerCase();
-    if(this.selectedLaunchIndex == i) {
+    if(this.selectedLaunchIndex === i) {
       this.selectedLaunchIndex = null;
       this.launch = '';
     } else {
@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
   filterlandingStatus(landing,i) {
     console.log(landing);
     console.log(i);
-    if(landing == 'True') {
+    if(landing === 'True') {
     this.landing = landing.toLowerCase()
     } else {
       this.landing = landing;

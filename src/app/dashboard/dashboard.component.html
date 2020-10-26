@@ -9,7 +9,7 @@
             </div>
         <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px; margin-left: 20px">
             <div *ngFor="let year of years; let i = index" class="grid-item">
-                <button (click)="filterYear(year,i)" class="button" [ngClass]="{'highlight': i == selectedYearIndex}">{{year}}</button>
+                <button (click)="filterYear(year,i)" class="button" [ngClass]="{'highlight': i === selectedYearIndex}">{{year}}</button>
             </div>
         </div>
         <div class="text-center">
@@ -17,7 +17,7 @@
         </div>
         <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;  margin-left: 20px">
             <div *ngFor="let launch of launchStatus; let i = index" class="grid-item">
-                <button (click)="filterlaunchStatus(launch,i)" class="button" [ngClass]="{'highlight': i == selectedLaunchIndex}">{{launch}}</button>
+                <button (click)="filterlaunchStatus(launch,i)" class="button" [ngClass]="{'highlight': i === selectedLaunchIndex}">{{launch}}</button>
             </div>
         </div>
         <div class="text-center">
@@ -25,7 +25,7 @@
         </div>
         <div style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-column-gap: 25px; grid-row-gap: 25px;  margin-left: 20px">
             <div *ngFor="let landing of landingStatus; let i = index" class="grid-item">
-                <button (click)="filterlandingStatus(landing,i)" class="button" [ngClass]="{'highlight': i == selectedLandStatusIndex}">{{landing}}</button>
+                <button (click)="filterlandingStatus(landing,i)" class="button" [ngClass]="{'highlight': i === selectedLandStatusIndex}">{{landing}}</button>
             </div>
         </div>
     </div>
@@ -34,15 +34,19 @@
     <div class="grid-container">
         <div *ngFor="let data of dataFromAPi; let i = index" class="grid-item" style="background-color: white; padding: 10px;">
             <div class="center">
-                <img [src]="data.links.mission_patch_small" class="img">
+                <img [src]="data.links.mission_patch_small" class="img" alt='spacexLogo'>
             </div>
             <div class="padding-bottom">
                 <label class="bold-purple">{{data.mission_name}} # {{data.flight_number}}</label>
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Mission Ids: </label>
-                <label class="blue" *ngIf="data.mission_id.length > 0">{{data.mission_id[0]}}</label>
-                <label class="blue" *ngIf="data.mission_id.length == 0">NA</label>
+                <div *ngIf="data.mission_id.length > 0">
+                    <ul class="blue" *ngFor="let id of data.mission_id">
+                        <li>{{id}}</li>
+                    </ul>
+                </div>
+                <label class="blue" *ngIf="data.mission_id.length === 0">NA</label>
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Launch Year: </label>
@@ -54,15 +58,16 @@
             </div>
             <div class="padding-bottom">
                 <label class="bold-black">Successful Landing: </label>
-                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success == null">false</label>
-                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success != null">{{data.rocket.first_stage.cores[0].land_success}}</label>
+                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success === null">false</label>
+                <label class="blue" *ngIf="data.rocket.first_stage.cores[0].land_success !== null">{{data.rocket.first_stage.cores[0].land_success}}</label>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <h3>Developed By Prabhjot Singh</h3>
+        <label class="bold-black">Developed By: </label>
+        <label>Prabhjot Singh</label>
 </footer>
 
 
