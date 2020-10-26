@@ -1,3 +1,15 @@
+I have created a httpservice file that holds logic for HTTP calls for the API
+
+The main component is dashboard component that holds all the logic for the app. I have created different functions to filter records based on the input from buttons selected by the user.
+
+On tapping on any button, a loder will come until the records are fetched.
+
+when no filter is selected, the app will by default show all the records.
+
+LIVE version of app is vailable here. https://space-x-launch-program-by-prab.herokuapp.com/
+
+Please note that I have purposely written some inline styles in HTML just to show that all the concepts are clear. I have put CSS in component files also and some common CSS files in styles.css
+
 # SapcexLaunchProgram
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.

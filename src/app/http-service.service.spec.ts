@@ -157,15 +157,15 @@ describe('HttpServiceService', () => {
     });
 
     //Test case 2
-    it('should return expected length of spaceshuttle response', () => {
-      service.getSpaceShuttleRecords().subscribe(response =>  expect(response.length).toEqual(100, 'should have length as 100'),
+    it('should return expected spaceshuttle by calling once', () => {
+      service.getSpaceShuttleRecords().subscribe(response =>  expect(response.length).toEqual(1, 'should have length as 1'),
       fail);
       const req = httpTestingController.expectOne(service.spaceUrl);
       expect(req.request.method).toEqual('GET');
       req.flush(expectedSpaceShuttleList);//Return expected
     });
 
-    //Test case 3
+    //Test case 3  // this test will fail
     it('should return expected spaceshuttle by calling once', () => {
       service.getSpaceShuttleRecords().subscribe(response =>  expect(response.length).toEqual(99, 'should have length as 100'),
       fail);

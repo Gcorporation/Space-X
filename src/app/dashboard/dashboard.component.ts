@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
     this.spinner.show();
    }
 
+  // code to fetch all the records while opening the app for the first time
+
   ngOnInit(): void {
     this.httpService.get().subscribe((result: any[])=>{
       console.log("result from API -->",result);
@@ -31,6 +33,8 @@ export class DashboardComponent implements OnInit {
       this.spinner.hide();
     }) 
   }
+
+  // code to filter the records based on year selected 
 
   filterYear(year,i) {
     console.log(year);
@@ -54,6 +58,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  // code to filter records based on launch status
+
   filterlaunchStatus(launch,i) {
     console.log(launch);
     console.log(i);
@@ -76,6 +82,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  // code to filter records based on landing status
+  
   filterlandingStatus(landing,i) {
     console.log(landing);
     console.log(i);
